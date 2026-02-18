@@ -5,10 +5,13 @@
 
 import { Footer } from '../footer/footer';
 import { Outlet } from 'react-router-dom';
+import { Header } from '../header';
 
 export function Layout() {
     return (
         <>
+            {/*Componente de cabeçalho */}
+            <Header />
             {/* Placeholder para renderizar o componente da página atual */}
             <Outlet/>
             {/* Componente de rodapé */}

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export function NotFoundPage() {
     return (
-        <div className="flex w-full min-h-screen justify-center items-center flex-col text-white">
+        <div className="flex w-full min-h-screen justify-center items-center flex-col text-black">
             <h1 className="font-bold text-4xl mb-4">ERROR 404</h1>
             <h1 className="font-bold text-4xl mb-4">Not Found</h1>
             <p className="italic text-1xl mb-4">Essa pagina não existe!</p>

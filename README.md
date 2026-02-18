@@ -1,6 +1,6 @@
 # eDevComerce
 
-Projeto de e-comerce desenvolvido em React e Typescript.
+Projeto de e-comerce desenvolvido em React, Typescript e Tailwind CSS.
 
 # React + TypeScript + Vite
 

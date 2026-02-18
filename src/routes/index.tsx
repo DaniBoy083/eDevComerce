@@ -7,6 +7,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { NotFoundPage } from "../pages/notfound";
 import { Layout } from "../components/layout";
 import { HomePage } from "../pages/home";
+import { CartPage } from "../pages/cart";
 
 // Criação do roteador com as rotas da aplicação
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <HomePage />
+            },
+            {
+                path: "/cart",
+                element: <CartPage />
             },
             {
                 // Rota coringa para página 404 (qualquer rota não definida)
