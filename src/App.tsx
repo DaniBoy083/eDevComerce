@@ -1,11 +1,14 @@
 import { router } from "./routes/index";
 import { RouterProvider } from "react-router-dom";
+import CartProvider from "./contexts/CartContext";
 
 export default function App() {
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </div>
   )
 }

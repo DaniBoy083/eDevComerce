@@ -1,27 +1,59 @@
 import { BsCartPlus } from "react-icons/bs";
+import { useEffect, useState, useContext } from "react";
+import { api } from "../../services/api";
+import { CartContext } from "../../contexts/CartContext";
+
+export interface productProps{
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    cover: string;
+}
 
 export function HomePage() {
+    const { addItemCart } = useContext(CartContext)
+    const [products, setProducts] = useState<productProps[]>([])
+
+    useEffect(() => {
+        async function getPoducts(){
+            const response = await api.get("/products")
+            setProducts(response.data)
+            console.log(response.data);
+        }
+        getPoducts();
+    }, [])
+
+    function handleAddCartItem(product: productProps){
+        addItemCart(product);
+        console.log(product);
+    }
     return (
         <div>
             <main className="w-full max-w-7xl px-4 mx-auto">
                 <h1 className="font-bold text-2xl mb-4 mt-10 text-center">Mais procurados</h1>
                 <div className="grid gird-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
-                    <section className="w-full">
+                    {products.map((product) => (
+                    <section key={product.id} className="w-full">
                         <img
                             className="w-full rounded-lg max-h-70 mb-2"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxMka8bf5J63Lmy3pWuAIKfjn4zPYSc3cj8g&s" 
-                            alt="Foto do produto"
+                            src={product.cover} 
+                            alt={product.title}
                         />
-                        <p className="font-medium mt-1 mb-2">iPhone 13 Pro</p>
+                        <p className="font-medium mt-1 mb-2">{product.title}</p>
                         <div className="flex gap-3 items-cemter">
                             <strong className="text-zinc-700/90">
-                                R$ 10.000
+                                {product.price.toLocaleString("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL"
+                                })}
                             </strong>
-                            <button className="bg-zinc-900 p-1 rounded">
+                            <button onClick={() => handleAddCartItem(product)} className="bg-zinc-900 p-1 rounded">
                                 <BsCartPlus size={20} color="white"/>
                             </button>
                         </div>
                     </section>
+                    ))}
                 </div>
             </main>
         </div>
