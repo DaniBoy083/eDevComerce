@@ -8,6 +8,7 @@ import { NotFoundPage } from "../pages/notfound";
 import { Layout } from "../components/layout";
 import { HomePage } from "../pages/home";
 import { CartPage } from "../pages/cart";
+import { ProductDetail } from "../pages/detail";
 
 // Criação do roteador com as rotas da aplicação
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <CartPage />
+            },
+            {
+                path: "/product/:id",
+                element: <ProductDetail />
             },
             {
                 // Rota coringa para página 404 (qualquer rota não definida)

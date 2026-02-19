@@ -2,6 +2,8 @@ import { BsCartPlus } from "react-icons/bs";
 import { useEffect, useState, useContext } from "react";
 import { api } from "../../services/api";
 import { CartContext } from "../../contexts/CartContext";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export interface productProps{
     id: number;
@@ -25,6 +27,7 @@ export function HomePage() {
     }, [])
 
     function handleAddCartItem(product: productProps){
+        toast.success("Produto adicionado ao carrinho!")
         addItemCart(product);
         console.log(product);
     }
@@ -35,11 +38,13 @@ export function HomePage() {
                 <div className="grid gird-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
                     {products.map((product) => (
                     <section key={product.id} className="w-full">
-                        <img
-                            className="w-full rounded-lg max-h-70 mb-2"
-                            src={product.cover} 
-                            alt={product.title}
-                        />
+                        <Link to={`/product/${product.id}`}>
+                            <img
+                                className="w-full rounded-lg max-h-70 mb-2"
+                                src={product.cover} 
+                                alt={product.title}
+                            />
+                        </Link>
                         <p className="font-medium mt-1 mb-2">{product.title}</p>
                         <div className="flex gap-3 items-cemter">
                             <strong className="text-zinc-700/90">

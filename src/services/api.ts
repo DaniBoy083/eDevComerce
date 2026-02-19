@@ -4,7 +4,7 @@ import axios from "axios";
 // Cria uma instância personalizada do axios.
 // Isso é melhor do que usar axios direto,
 // porque você pode configurar baseURL, headers, interceptors etc.
-// json-server --watch db.json
+// json-server --watch server/db.json
 export const api = axios.create({
     // baseURL define a URL base da sua API.
     // Toda requisição feita com essa instância
