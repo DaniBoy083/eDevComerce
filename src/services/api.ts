@@ -12,5 +12,5 @@ export const api = axios.create({
     // Exemplo:
     // api.get("/products")
     // vira -> http://localhost:3000/products
-    baseURL: "http://localhost:3000",
+    baseURL: "https://products-k7p8.onrender.com",
 });
